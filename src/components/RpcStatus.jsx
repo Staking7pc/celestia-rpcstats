@@ -12,7 +12,7 @@ function RpcStatus(props) {
     { key: "network", label: "NETWORK" },
     { key: "version", label: "VERSION" },
     { key: "rpcUrl", label: "END POINT" },
-    { key: "timestamp", label: "CHECKED_ON" }
+    { key: "timestamp", label: "CHECKED_ON (UTC)" }
   ];
   const [rpcDetails, setRpcDetails] = useState([]);
   const [order, setOrder] = useState('ASC');
