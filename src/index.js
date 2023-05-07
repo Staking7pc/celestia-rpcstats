@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import Individual from "./components/Individual";
 import RpcStatus from "./components/RpcStatus";
+import GrpcStatus from "./components/GrpcStatus";
+import APIStatus from "./components/APIStaus";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
@@ -19,6 +21,8 @@ root.render(
         <Route path="/" element={<App/>} />
         <Route path="/validator/:valoper" element={<Individual/>} />
         <Route path="/rpc-status" element={<RpcStatus/>} />
+        <Route path="/grpc-status" element={<GrpcStatus/>} />
+        <Route path="/api-status" element={<APIStatus/>} />
       </Routes>
     </React.Fragment>
   </Router>
