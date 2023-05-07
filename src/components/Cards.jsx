@@ -22,13 +22,13 @@
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h3>Accuracy</h3>
+                                <h3>Update Frequency</h3>
                             </div>
                             <div class="card-body">
                                 <p>
-                                    We run two RPC calls every minute /abci and /status and publish the results accordingly.
+                                    We run two RPC calls every 5 minute /abci and /status and publish the results.
                                 </p>
-                                <a target="_blank" rel="noopener noreferrer" href="" class="btn">Our approach</a>
+                                <a target="_blank" rel="noopener noreferrer" href="" class="btn">Every 5 mins</a>
                             </div>
                         </div>
                         <div class="card">
