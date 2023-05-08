@@ -5,7 +5,7 @@ import App from './App';
 import Individual from "./components/Individual";
 import RpcStatus from "./components/RpcStatus";
 import GrpcStatus from "./components/GrpcStatus";
-import APIStatus from "./components/APIStaus";
+import APIStatus from "./components/APIStatus";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 
@@ -28,16 +28,3 @@ root.render(
   </Router>
 
 );
-
-// ReactDOM.render(
-//   <Router>
-//     <React.Fragment>
-//       <App />
-//       <Routes>
-//         <Route path="/" element={<App/>} />
-//         <Route path="/validator/:valoper" element={<Individual/>} />
-//       </Routes>
-//     </React.Fragment>
-//   </Router>,
-//   document.getElementById("root")
-// );
