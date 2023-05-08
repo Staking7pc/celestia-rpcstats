@@ -61,11 +61,11 @@ function RpcStatus(props) {
         {
           rpcDetails.map((val) => {
             return (
-              <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False")? "error":"NO"} key={val.moniker}>
+              <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False")? "error":val.latestBlock=='None'?'error':'NO'} key={val.moniker}>
                  <td className='bold'>{String(val.moniker).toUpperCase()}</td>
                 <td className={val.catchingUp === "False" ? "Active" : "InActive"}>{val.catchingUp}</td>
                 <td>{val.earliestBlock}</td>
-                <td>{val.latestBlock}</td>
+                <td className={val.latestBlock=='None'?'InActive':'NO'}>{val.latestBlock}</td>
                 <td className={val.network === "blockspacerace-0" ? "Active" : "InActive"}>{val.network}</td>
                 <td className={val.version >= "0.13.0" ? "Active" : "InActive"}>{val.version}</td>
                 <td>{val.rpcUrl}</td>
