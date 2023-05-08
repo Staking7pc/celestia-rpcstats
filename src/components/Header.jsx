@@ -10,7 +10,7 @@ export default function Header() {
         </li>
         <li className='li-r'><a class="active" href="/rpc-status">RPC</a></li>
         <li className='li-r'><a class="active" href="/grpc-status">gRPC</a></li>
-        <li className='li-r'><a class="active" href="/api-status">API</a></li>
+        {/* <li className='li-r'><a class="active" href="/api-status">API</a></li> */}
       </ul>
     </div>
   )
