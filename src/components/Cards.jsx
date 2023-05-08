@@ -15,9 +15,9 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    We gathered endpoints from the github page for blockspace race particpants
+                                    We gather endpoints every 5 minutes for blockspace race particpants from github
                                 </p>
-                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/celestiaorg/docs/blob/main/docs/nodes/blockspace-race.mdx" class="btn">Click here</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/celestiaorg/docs/blob/main/docs/nodes/blockspace-race.mdx" class="btn">Github link</a>
                             </div>
                         </div>
                         <div class="card">
