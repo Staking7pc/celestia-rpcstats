@@ -17,7 +17,7 @@ function RpcStatus(props) {
   ];
   const [rpcDetails, setRpcDetails] = useState([]);
   const [order, setOrder] = useState('ASC');
-  const [time1, settime] = useState([]);
+  const [time1, settime] = useState();
 
 
   const sorting = (col) => {
@@ -42,9 +42,8 @@ function RpcStatus(props) {
     axios.get("https://celestia-tools.brightlystake.com/api/celestia/rpcstatus")
       .then((res) => {
         setRpcDetails(res.data)
-        
-        console.log(res.data)
-        //settime(res.data[2].timestamp)
+        console.log(res.data[2].timestamp)
+        settime(res.data[2].timestamp)
       });
   }
 
@@ -55,7 +54,7 @@ function RpcStatus(props) {
 
   return (
     <div>
-    {/* <h3 className='header1'> Last checked on {rpcDetails[1].timestamp}</h3> */}
+    <h4 className='header1'> Last checked on {time1} UTC</h4>
     <table id='validators'>
       
       <thead>
