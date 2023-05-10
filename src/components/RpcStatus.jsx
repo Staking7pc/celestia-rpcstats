@@ -7,15 +7,18 @@ function RpcStatus(props) {
   const headers = [
     { key: "moniker", label: "MONIKER" },
     { key: "catchingUp", label: "CATCHING_UP" },
+    { key: "indexer", label: "INDEXING" },
     { key: "earliestBlock", label: "EARLIEST_BLOCK" },
     { key: "latestBlock", label: "LATEST_BLOCK" },
     { key: "network", label: "NETWORK" },
     { key: "version", label: "VERSION" },
     { key: "rpcUrl", label: "END POINT" },
-    { key: "timestamp", label: "CHECKED_ON (UTC)" }
+    // { key: "timestamp", label: "CHECKED_ON (UTC)" }
   ];
   const [rpcDetails, setRpcDetails] = useState([]);
   const [order, setOrder] = useState('ASC');
+  const [time1, settime] = useState([]);
+
 
   const sorting = (col) => {
     if (order === 'ASC') {
@@ -39,7 +42,9 @@ function RpcStatus(props) {
     axios.get("https://celestia-tools.brightlystake.com/api/celestia/rpcstatus")
       .then((res) => {
         setRpcDetails(res.data)
+        
         console.log(res.data)
+        //settime(res.data[2].timestamp)
       });
   }
 
@@ -49,7 +54,10 @@ function RpcStatus(props) {
 
 
   return (
+    <div>
+    {/* <h3 className='header1'> Last checked on {rpcDetails[1].timestamp}</h3> */}
     <table id='validators'>
+      
       <thead>
         <tr className='header'>
           {headers.map((row) => {
@@ -64,18 +72,20 @@ function RpcStatus(props) {
               <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False")? "error":val.latestBlock=='None'?'error':'NO'} key={val.moniker}>
                  <td className='bold'>{String(val.moniker).toUpperCase()}</td>
                 <td className={val.catchingUp === "False" ? "Active" : "InActive"}>{val.catchingUp}</td>
+                <td>{val.indexer}</td>
                 <td>{val.earliestBlock}</td>
                 <td className={val.latestBlock=='None'?'InActive':'NO'}>{val.latestBlock}</td>
                 <td className={val.network === "blockspacerace-0" ? "Active" : "InActive"}>{val.network}</td>
                 <td className={val.version >= "0.13.0" ? "Active" : "InActive"}>{val.version}</td>
                 <td>{val.rpcUrl}</td>
-                <td>{val.timestamp}</td>
+                {/* <td>{val.timestamp}</td> */}
               </tr>
             )
           })
         }
       </tbody>
     </table>
+    </div>
   )
 }
 
