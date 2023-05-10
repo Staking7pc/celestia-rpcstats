@@ -72,7 +72,7 @@ function RpcStatus(props) {
               <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False")? "error":val.latestBlock=='None'?'error':'NO'} key={val.moniker}>
                  <td className='bold'>{String(val.moniker).toUpperCase()}</td>
                 <td className={val.catchingUp === "False" ? "Active" : "InActive"}>{val.catchingUp}</td>
-                <td>{val.indexer}</td>
+                <td className={val.indexer=='on'?'green':'NO'}>{String(val.indexer).toUpperCase()}</td>
                 <td>{val.earliestBlock}</td>
                 <td className={val.latestBlock=='None'?'InActive':'NO'}>{val.latestBlock}</td>
                 <td className={val.network === "blockspacerace-0" ? "Active" : "InActive"}>{val.network}</td>
