@@ -56,6 +56,7 @@ const LatencyTable = () => {
     <div>
       <Header1 />
       <h3 className='header1' >Latency from 3 differnet locations for the same endpoint</h3>
+      <h4 className='header1'>Query used: endpoint/block_results?height=461988</h4>
       <table id='validators1'>
         <thead>
           <tr className='header'>
