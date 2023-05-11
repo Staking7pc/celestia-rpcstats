@@ -3,20 +3,26 @@
     /* Change your font family */
 
   }
-  table#validators tbody tr.error {
+  table#validators1 tbody tr.error {
     background-color: #f3e2dd;
   }
-  #validators {
+
+  table#validators1 tbody tr.warn {
+    background-color: #f5f3d6;
+  }
+  #validators1 {
     border-collapse: collapse;
     margin: 25px 25px;
     font-size: 0.85em;
     min-width: 400px;
+    margin-left: 14em;
+    align-items:center;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
   .InActive {
-    color: crimson;
+    color: #dc143c;
     font-weight: bolder;
   }
 
@@ -24,20 +30,20 @@
     text-decoration: none;
 }
 
-  #validators thead tr {
+  #validators1 thead tr {
     background-color: #6610f2;
     color: #ffffff;
     text-align: center;
     font-weight: bold;
   }
 
-  #validators th,
-  #validators td {
+  #validators1 th,
+  #validators1 td {
     padding: 12px 15px;
     text-align: center;
   }
 
-  #validators tbody tr {
+  #validators1 tbody tr {
     border-bottom: 1px solid #dddddd;
   }
   .green{
@@ -45,19 +51,19 @@
     font-weight: bold;
   }
 
-  #validators tbody tr:nth-of-type(even) {
+  #validators1 tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
   }
 
-  #validators tbody tr:last-of-type {
+  #validators1 tbody tr:last-of-type {
     border-bottom: 2px solid #76D7C4;
   }
 
-  #validators tbody tr.active-row {
+  #validators1 tbody tr.active-row {
     font-weight: bold;
     color: #76D7C4;
   }
-  .validator{
+  .validator1{
   font-weight: bolder;
   }
   .decorate{
