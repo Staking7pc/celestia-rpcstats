@@ -72,7 +72,7 @@ const LatencyTable = () => {
         <tbody>
           {
             sortedData.map((row) => (
-              <tr className = {(row.chicago_latency < 0.9 && row.singapore_latency < 0.9 && row.germany_latency < 0.9)?'decorate':"NO"}key={row.rpcUrl}>
+              <tr className = {(row.chicago_latency < 1 && row.singapore_latency < 1 && row.germany_latency < 1)?'decorate':"NO"}key={row.rpcUrl}>
                 <td>{row.rpcUrl}</td>
                 <td>{row.chicago_latency.toFixed(2)}</td>
                 <td>{row.singapore_latency.toFixed(2)}</td>
