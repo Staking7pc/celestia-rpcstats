@@ -72,7 +72,7 @@ const LatencyTable = () => {
               Germany Latency {sortField === 'germany_latency' && (sortDirection === 'asc' ? '▲' : '▼')}
             </th>
             <th onClick={() => handleSort('time')}>
-              As Of Time {sortField === 'time' && (sortDirection === 'asc' ? '▲' : '▼')}
+              Last checked {sortField === 'time' && (sortDirection === 'asc' ? '▲' : '▼')}
             </th>
           </tr>
         </thead>
