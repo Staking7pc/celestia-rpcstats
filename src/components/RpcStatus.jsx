@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import './RpcStatus.css'
-import copy from './copy-icon.png'
+import Header1 from "./Header";
+
 function RpcStatus(props) {
 
   const headers = [
@@ -60,6 +61,7 @@ function RpcStatus(props) {
 
   return (
     <div>
+      <Header1 />
       <h4 className='header1'> Last checked on {time1} UTC</h4>
       <table id='validators'>
 

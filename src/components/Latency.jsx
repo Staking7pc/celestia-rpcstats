@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Latency.css'
 import axios from 'axios';
+import Header1 from "./Header";
 
 const LatencyTable = () => {
   const [latencyData, setLatencyData] = useState([]);
@@ -46,6 +47,7 @@ const LatencyTable = () => {
 
   return (
     <div>
+      <Header1 />
       <h3 className='header1' >Latency from 3 differnet locations for the same endpoint</h3>
       <table id='validators1'>
         <thead>
