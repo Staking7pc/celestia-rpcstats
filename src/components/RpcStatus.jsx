@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import './RpcStatus.css'
 import Header1 from "./Header";
+import Cards from "./Cards";
 
 function RpcStatus(props) {
 
@@ -62,6 +63,7 @@ function RpcStatus(props) {
   return (
     <div>
       <Header1 />
+      <Cards />
       <h4 className='header1'> Last checked on {time1} UTC</h4>
       <table id='validators'>
 

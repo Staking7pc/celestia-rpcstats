@@ -19,7 +19,7 @@ root.render(
   <Router>
     <React.Fragment>
       <Routes>
-        <Route path="/" element={<App/>} />
+        <Route path="/" element={<RpcStatus/>} />
         <Route path="/validator/:valoper" element={<Individual/>} />
         <Route path="/rpc-status" element={<RpcStatus/>} />
         <Route path="/grpc-status" element={<GrpcStatus/>} />
