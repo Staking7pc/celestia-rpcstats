@@ -7,6 +7,13 @@ const LatencyTable = () => {
   const [latencyData, setLatencyData] = useState([]);
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState(null);
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyClick = (text) => {
+    navigator.clipboard.writeText(text);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000); // reset the copied state after 2 seconds
+  };
 
   useEffect(() => {
     const fetchLatencyData = async () => {
@@ -72,8 +79,10 @@ const LatencyTable = () => {
         <tbody>
           {
             sortedData.map((row) => (
-              <tr className = {(row.chicago_latency < 1 && row.singapore_latency < 1 && row.germany_latency < 1)?'decorate':"NO"}key={row.rpcUrl}>
-                <td>{row.rpcUrl}</td>
+              <tr className={(row.chicago_latency < 1 && row.singapore_latency < 1 && row.germany_latency < 1) ? 'decorate' : "NO"} key={row.rpcUrl}>
+                <td class="tooltip" onClick={() => handleCopyClick(row.rpcUrl)}>{row.rpcUrl}
+                  <span class="tooltiptext">Click to copy</span>
+                </td>
                 <td>{row.chicago_latency.toFixed(2)}</td>
                 <td>{row.singapore_latency.toFixed(2)}</td>
                 <td>{row.germany_latency.toFixed(2)}</td>
