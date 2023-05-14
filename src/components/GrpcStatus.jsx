@@ -55,7 +55,9 @@ const GrpcStatus = () => {
   return (
     <div>
       <Header1 />
-      <h3 className='header1' >If the gRPC url provided in <a target="_blank" rel="noopener noreferrer"  href='https://github.com/celestiaorg/docs/blob/main/docs/nodes/blockspace-race.mdx'>github</a> didnt work we tried removing http/https and tried, If that didnt work we tried by adding default port 9090</h3>
+      <h3 className='header1' > gRPC Stats for Celestia
+      <p></p>
+        <a target="_blank" rel="noopener noreferrer" href='https://medium.com/@staking7pc/grpc-status-for-celestia-endpoints-190a16f7d741'>Approach</a></h3>      
       <h4 className='header1'>Method used: We ran "grpcurl -plaintext endpoints list" to see if we get a response</h4>
       <table id='validators1'>
         <thead>
