@@ -12,7 +12,7 @@ const LatencyTable = () => {
   const handleCopyClick = (text) => {
     navigator.clipboard.writeText(text);
     setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000); // reset the copied state after 2 seconds
+    setTimeout(() => setIsCopied(false), 2000); 
   };
 
   useEffect(() => {
@@ -58,7 +58,7 @@ const LatencyTable = () => {
       <h3 className='header1' > Latency for RPC endpoints 
       <p></p>
         <a target="_blank" rel="noopener noreferrer" href='https://medium.com/@staking7pc/approach-to-mesure-latency-for-celestia-rpc-endpoints-d15e16a8679d'>Approach</a></h3>
-      <h4 className='header1'>Query used: endpoint/block_results?height=461988</h4>
+      <h4 className='header1'>Mocha Query used: endpoint/block_results?height=261988</h4>
       <table id='validators1'>
         <thead>
           <tr className='header'>

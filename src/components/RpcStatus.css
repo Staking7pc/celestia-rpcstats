@@ -3,18 +3,28 @@
     /* Change your font family */
 
   }
+
   table#validators tbody tr.error {
     background-color: #f3e2dd;
   }
+
+  .table-container {
+    display: flex;
+    justify-content: center;
+    /* Horizontally centers the table */
+  }
+
+
   #validators {
     border-collapse: collapse;
     margin: 25px 25px;
     font-size: 0.85em;
-    min-width: 400px;
+    min-width: 1400px;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   }
+
   .InActive {
     color: crimson;
     font-weight: bolder;
@@ -22,7 +32,7 @@
 
   .apy {
     text-decoration: none;
-}
+  }
 
   #validators thead tr {
     background-color: #6610f2;
@@ -40,7 +50,8 @@
   #validators tbody tr {
     border-bottom: 1px solid #dddddd;
   }
-  .green{
+
+  .green {
     color: #0da724;
     font-weight: bold;
   }
@@ -57,53 +68,96 @@
     font-weight: bold;
     color: #76D7C4;
   }
-  .validator{
-  font-weight: bolder;
+
+  .validator {
+    font-weight: bolder;
   }
-  .decorate{
+
+  .decorate {
     background-color: #CEE5D0;
   }
 
-  .bold{
+  .bold {
     font-weight: bolder;
-    }
+  }
 
-    .header1{
-      margin-top: 2em;
-      text-align: center;
-    }
+  .header1 {
+    margin-top: 2em;
+    text-align: center;
+  }
 
-    .tooltip {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .tooltip .tooltiptext {
-      visibility: hidden;
-      width: 120px;
-      background-color: rgb(151, 248, 161);
-      color: rgb(13, 13, 13);
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px 0;
-      position: absolute;
-      z-index: 1;
-      bottom: 100%;
-      left: 50%;
-      margin-left: -60px;
-    }
-    
-    .tooltip .tooltiptext::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: black transparent transparent transparent;
-    }
-    
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-    }
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(151, 248, 161);
+    color: rgb(13, 13, 13);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .network-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allow buttons to wrap to the next line if needed */
+    margin-bottom: 20px;
+    /* Spacing below the button group */
+  }
+
+  .network-buttons button {
+    background-color: #f0f0f0;
+    /* Light grey background */
+    border: 1px solid #ccc;
+    /* Grey border */
+    padding: 8px 16px;
+    /* Vertical and horizontal padding */
+    margin: 5px;
+    /* Spacing around each button */
+    font-size: 14px;
+    /* Font size */
+    cursor: pointer;
+    /* Hand cursor on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth transition for background color changes */
+  }
+
+  .network-buttons button:hover {
+    background-color: #e0e0e0;
+    /* Slightly darker grey on hover */
+  }
+
+  .network-buttons button.active {
+    background-color: #007bff;
+    /* Blue color when active */
+    color: white;
+    /* White text color when active */
+    border-color: #0056b3;
+    /* Darker blue border when active */
+  }
