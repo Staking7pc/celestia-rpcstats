@@ -60,7 +60,7 @@ function RpcStatus(props) {
               onClick={() => setSelectedNetwork(String(network))}
               className={selectedNetwork === String(network) ? 'active' : ''}
             >
-              {network == 'None' ? 'Faulty Endpoints' : network}
+              {network == 'None' ? 'Not-reachable Endpoints' : network}
             </button>
 
           ))}
