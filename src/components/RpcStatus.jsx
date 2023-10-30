@@ -8,29 +8,31 @@ function RpcStatus(props) {
 
   const headers = [
     { key: "moniker", label: "MONIKER" },
+    { key: "rpcUrl", label: "END POINT" },
     { key: "catchingUp", label: "CATCHING_UP" },
     { key: "indexer", label: "INDEXING" },
     { key: "earliestBlock", label: "EARLIEST_BLOCK" },
     { key: "latestBlock", label: "LATEST_BLOCK" },
     { key: "network", label: "NETWORK" },
     { key: "version", label: "VERSION" },
-    { key: "rpcUrl", label: "END POINT" },
+
     // { key: "timestamp", label: "CHECKED_ON (UTC)" }
   ];
 
   const [rpcDetails, setRpcDetails] = useState([]);
   const [order, setOrder] = useState('ASC');
   const [time1, setTime] = useState(); // CamelCased
-  const [isCopied, setIsCopied] = useState(false);
+  const [copiedUrl, setCopiedUrl] = useState(null);
   const [sortedColumn, setSortedColumn] = useState(null);
   const [selectedNetwork, setSelectedNetwork] = useState('mocha-4');
   let networks = [...new Set(rpcDetails.map(detail => detail.network))];
 
   const handleCopyClick = (text) => {
     navigator.clipboard.writeText(text);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
+    setCopiedUrl(text);
+    setTimeout(() => setCopiedUrl(null), 2000);
   };
+
 
   useEffect(() => {
     axios.get('https://celestia-tools.brightlystake.com/api/celestia/rpcstatus')
@@ -47,57 +49,60 @@ function RpcStatus(props) {
   return (
     <div className="table-container">
 
-    <div key={selectedNetwork}>
-      <Header1 />
-      <Cards />
-      <h4 className='header1'> Last checked on {time1} UTC</h4>
-      <div className="network-buttons">
-        {networks.map(network => (
-          <button
-            key={network}
-            onClick={() => setSelectedNetwork(String(network))}
-            className={selectedNetwork === String(network) ? 'active' : ''}
-          >
-            {network=='None'?'Faulty Endpoints':network}
-          </button>
+      <div key={selectedNetwork}>
+        <Header1 />
+        <Cards />
+        <h4 className='header1'> Last checked on {time1} UTC</h4>
+        <div className="network-buttons">
+          {networks.map(network => (
+            <button
+              key={network}
+              onClick={() => setSelectedNetwork(String(network))}
+              className={selectedNetwork === String(network) ? 'active' : ''}
+            >
+              {network == 'None' ? 'Faulty Endpoints' : network}
+            </button>
 
-        ))}
-        <button onClick={() => setSelectedNetwork(null)}>Show All</button>
+          ))}
+          <button onClick={() => setSelectedNetwork(null)}>Show All</button>
+        </div>
+
+        <table id='validators' key={`${selectedNetwork}-${sortedColumn}-${order}`}>
+
+          <thead>
+            <tr className='header'>
+              {headers.map((row) => {
+                return <td>{row.label}</td>
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {
+              rpcDetails
+                .filter(detail => !selectedNetwork || String(detail.network) === String(selectedNetwork))
+                .map(val => {
+                  return (
+                    <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False") ? "error" : val.latestBlock == 'None' ? 'error' : 'NO'} key={val.moniker}>
+                      <td className='bold'>{String(val.moniker).toUpperCase()}</td>
+                      <td className="tooltip" onClick={() => handleCopyClick(val.rpcUrl)}>
+                        {val.rpcUrl}
+                        <span className={`tooltiptext ${copiedUrl === val.rpcUrl ? 'copied' : ''}`}>
+                          {copiedUrl === val.rpcUrl ? 'Copied!' : 'Click to copy'}
+                        </span>
+                      </td>
+                      <td className={val.catchingUp === "False" ? "Active" : "InActive"}>{val.catchingUp}</td>
+                      <td className={val.indexer == 'on' ? 'green' : 'NO'}>{String(val.indexer).toUpperCase()}</td>
+                      <td>{val.earliestBlock}</td>
+                      <td className={val.latestBlock == 'None' ? 'InActive' : 'NO'}>{val.latestBlock}</td>
+                      <td className={val.network === "blockspacerace-0" ? "Active" : "InActive"}>{val.network}</td>
+                      <td className={val.version >= "0.13.0" ? "Active" : "InActive"}>{val.version}</td>
+                    </tr>
+                  )
+                })
+            }
+          </tbody>
+        </table>
       </div>
-
-      <table id='validators' key={`${selectedNetwork}-${sortedColumn}-${order}`}>
-
-        <thead>
-          <tr className='header'>
-            {headers.map((row) => {
-              return <td>{row.label}</td>
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {
-            rpcDetails
-              .filter(detail => !selectedNetwork || String(detail.network) === String(selectedNetwork))
-              .map(val => {
-                return (
-                  <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False") ? "error" : val.latestBlock == 'None' ? 'error' : 'NO'} key={val.moniker}>
-                    <td className='bold'>{String(val.moniker).toUpperCase()}</td>
-                    <td className={val.catchingUp === "False" ? "Active" : "InActive"}>{val.catchingUp}</td>
-                    <td className={val.indexer == 'on' ? 'green' : 'NO'}>{String(val.indexer).toUpperCase()}</td>
-                    <td>{val.earliestBlock}</td>
-                    <td className={val.latestBlock == 'None' ? 'InActive' : 'NO'}>{val.latestBlock}</td>
-                    <td className={val.network === "blockspacerace-0" ? "Active" : "InActive"}>{val.network}</td>
-                    <td className={val.version >= "0.13.0" ? "Active" : "InActive"}>{val.version}</td>
-                    <td class="tooltip" onClick={() => handleCopyClick(val.rpcUrl)}>{val.rpcUrl}
-                      <span class="tooltiptext">Click to copy</span>
-                    </td>
-                  </tr>
-                )
-              })
-          }
-        </tbody>
-      </table>
-    </div>
     </div>
   )
 }

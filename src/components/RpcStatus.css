@@ -13,6 +13,10 @@
     justify-content: center;
     /* Horizontally centers the table */
   }
+  .tooltip:hover .tooltiptext.copied {
+    background-color: #0da724; /* Green background color */
+    color: white;
+}
 
 
   #validators {
