@@ -24,7 +24,7 @@ function RpcStatus(props) {
   const [time1, setTime] = useState(); // CamelCased
   const [copiedUrl, setCopiedUrl] = useState(null);
   const [sortedColumn, setSortedColumn] = useState(null);
-  const [selectedNetwork, setSelectedNetwork] = useState('mocha-4');
+  const [selectedNetwork, setSelectedNetwork] = useState('celestia');
   let networks = [...new Set(rpcDetails.map(detail => detail.network))];
 
   const handleCopyClick = (text) => {
