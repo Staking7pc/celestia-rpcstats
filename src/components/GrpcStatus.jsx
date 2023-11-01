@@ -7,12 +7,12 @@ const GrpcStatus = () => {
   const [latencyData, setLatencyData] = useState([]);
   const [sortField, setSortField] = useState(null);
   const [sortDirection, setSortDirection] = useState(null);
-  const [isCopied, setIsCopied] = useState(false);
+  const [copiedUrl, setCopiedUrl] = useState(null);
 
   const handleCopyClick = (text) => {
     navigator.clipboard.writeText(text);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000); // reset the copied state after 2 seconds
+    setCopiedUrl(text);
+    setTimeout(() => setCopiedUrl(null), 2000);
   };
 
   useEffect(() => {
@@ -55,9 +55,9 @@ const GrpcStatus = () => {
   return (
     <div>
       <Header1 />
-      <h3 className='header1' > gRPC Stats for Celestia
-      <p></p>
-        <a target="_blank" rel="noopener noreferrer" href='https://medium.com/@staking7pc/grpc-status-for-celestia-endpoints-190a16f7d741'>Approach</a></h3>      
+      <h3 className='header1' > gRPC Stats for Celestia (Mainnet)
+        <p></p>
+        <a target="_blank" rel="noopener noreferrer" href='https://medium.com/@staking7pc/grpc-status-for-celestia-endpoints-190a16f7d741'>Approach</a></h3>
       <h4 className='header1'>Method used: We ran "grpcurl -plaintext endpoints list" to see if we get a response</h4>
       <table id='validators1'>
         <thead>
@@ -76,10 +76,13 @@ const GrpcStatus = () => {
         <tbody>
           {
             sortedData.map((row) => (
-              <tr className={(row.status=='FAIL') ? 'error' : "NO"} key={row.grpc_url}>
+              <tr className={(row.status == 'FAIL') ? 'error' : "NO"} key={row.grpc_url}>
                 <td>{row.grpc_url}</td>
-                <td class="tooltip" onClick={() => handleCopyClick(row.status)}>{row.status}
-                  <span class="tooltiptext">Click to copy</span>
+                <td className="tooltip" onClick={() => handleCopyClick(row.status)}>
+                  {row.status}
+                  <span className={`tooltiptext ${copiedUrl === row.status ? 'copied' : ''}`}>
+                    {copiedUrl === row.status ? 'Copied!' : 'Click to copy'}
+                  </span>
                 </td>
                 <td>{row.time}</td>
               </tr>
