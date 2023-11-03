@@ -48,9 +48,9 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    We run a job to fetch all the endpoints from github links twice a day. 
+                                    We run a job to fetch all the endpoints from github links every hour. 
                                 </p>
-                                <a target="_blank" rel="noopener noreferrer" href="" class="btn">Twice a day</a>
+                                <a target="_blank" rel="noopener noreferrer" href="" class="btn">Every hour</a>
                             </div>
                         </div>
 
