@@ -162,10 +162,10 @@
   }
 
   .network-buttons button.active {
-    background-color: #007bff;
+    background-color: #6610f2;
     /* Blue color when active */
     color: white;
     /* White text color when active */
-    border-color: #0056b3;
+    border-color: #ffffff;
     /* Darker blue border when active */
   }
