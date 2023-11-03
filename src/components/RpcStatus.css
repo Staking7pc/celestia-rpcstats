@@ -4,6 +4,10 @@
 
   }
 
+.highlight{
+  color: rgb(9, 171, 34);
+  font-weight: bold;
+}
   table#validators tbody tr.error {
     background-color: #f3e2dd;
   }

@@ -65,8 +65,9 @@ function RpcStatus(props) {
 
           ))}
           <button onClick={() => setSelectedNetwork(null)}>Show All</button>
+         
         </div>
-
+        <p className='highlight'>RPCs for DA nodes should have INDEXER ON and earliest block height as 1</p>
         <table id='validators' key={`${selectedNetwork}-${sortedColumn}-${order}`}>
 
           <thead>
