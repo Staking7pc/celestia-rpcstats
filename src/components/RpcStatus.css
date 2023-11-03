@@ -169,3 +169,90 @@
     border-color: #ffffff;
     /* Darker blue border when active */
   }
+
+
+
+
+
+
+
+
+
+
+
+  /* Existing styles */
+
+/* Add a media query for screens that are 768px wide or less */
+@media (max-width: 768px) {
+  
+  /* This will make the font smaller on small screens */
+  * {
+    font-size: 11px;
+  }
+  
+  .table-container {
+    display: block;
+    overflow-x: auto; /* Allows table to scroll horizontally on small devices */
+  }
+
+  /* Adjust the table layout for smaller screens */
+  table#validators {
+    min-width: unset; /* Allow the table to shrink */
+    width: 80%; /* Set table width to 100% of its container */
+    box-shadow: none; /* Optional: Remove box-shadow for a flatter design */
+  }
+
+  /* Make the buttons stack vertically and occupy the full width */
+  .network-buttons button {
+    display: block; /* Stack buttons vertically */
+    width: 95%; /* Full width */
+    box-sizing: border-box; /* Include padding and border in the element's width */
+  }
+  
+  /* Stacking table headers if necessary */
+  #validators thead tr {
+    display: block;
+  }
+
+  #validators th,
+  #validators td {
+    white-space: nowrap; /* Ensures content of table cells doesn't wrap */
+  }
+
+  #validators tbody tr {
+    display: block;
+  }
+  
+  /* Adjust the tooltip for smaller screens */
+  .tooltip .tooltiptext {
+    margin-left: unset; /* Center the tooltip */
+    left: 10%; /* Adjust left position */
+    right: 10%; /* Adjust right position */
+    width: 80%; /* Make the tooltip width smaller */
+  }
+
+  /* Make headers smaller */
+  .header1 {
+    font-size: 1.2em;
+  }
+
+  /* Simplify the button group layout */
+  .network-buttons {
+    display: block; /* Stack the buttons vertically */
+  }
+
+  /* Reduce the size of paddings and margins for small screens */
+  #validators th, #validators td {
+    padding: 8px 10px; /* Smaller padding */
+  }
+
+  /* If the text size in the buttons is too large, reduce it */
+  .network-buttons button {
+    padding: 8px; /* Smaller padding */
+    font-size: 12px; /* Smaller font size */
+  }
+  
+  /* You might also want to scale down or reorganize other elements so that they fit well on small screens */
+}
+
+/* You can add more media queries for different screen sizes if needed */
