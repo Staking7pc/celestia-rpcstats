@@ -187,7 +187,7 @@
   
   /* This will make the font smaller on small screens */
   * {
-    font-size: 12px;
+    font-size: 14px;
   }
   
   .table-container {
