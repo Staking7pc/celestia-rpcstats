@@ -17,7 +17,7 @@ const GrpcStatus = () => {
 
   useEffect(() => {
     const fetchLatencyData = async () => {
-      const response = await axios.get('https://celestia-tools.brightlystake.com/api/celestia/grpcstatus');
+      const response = await axios.get('https://Avail-tools.brightlystake.com/api/Avail/grpcstatus');
       setLatencyData(response.data);
     };
     fetchLatencyData();
@@ -55,9 +55,9 @@ const GrpcStatus = () => {
   return (
     <div>
       <Header1 />
-      <h3 className='header1' > gRPC Stats for Celestia (Mainnet)
+      <h3 className='header1' > gRPC Stats for Avail (Mainnet)
         <p></p>
-        <a target="_blank" rel="noopener noreferrer" href='https://medium.com/@staking7pc/grpc-status-for-celestia-endpoints-190a16f7d741'>Approach</a></h3>
+        <a target="_blank" rel="noopener noreferrer" href='https://medium.com/@staking7pc/grpc-status-for-Avail-endpoints-190a16f7d741'>Approach</a></h3>
       <h4 className='header1'>Method used: We ran "grpcurl -plaintext endpoints list" to see if we get a response</h4>
       <table id='validators1'>
         <thead>

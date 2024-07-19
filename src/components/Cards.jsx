@@ -6,29 +6,29 @@
             <body>
                 <div class="container">
                     <div class="heading">
-                        <h4>RPC Stats for Celestia</h4>
+                        <h4>RPC Stats for Avail</h4>
                     </div>
                     <div class="row">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Mocha endpoints</h3>
+                                <h3>Add your endpoint</h3>
                             </div>
                             <div class="card-body">
                                 <p>
-                                    We gather endpoints every day from github of mocha testnet
+                                    Please reachout to us on the link below
                                 </p>
-                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/celestiaorg/docs/blob/main/nodes/mocha-testnet.md" class="btn">Github link</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://t.me/+tPE_9kOuDAJiOTk1" class="btn">Contact us</a>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-header">
-                                <h3>Mainnet endpoints</h3>
+                                <h3>Report problems</h3>
                             </div>
                             <div class="card-body">
                                 <p>
-                                    We gather endpoints every day from github of mainnet
+                                    If you see a discrepancy please report to us.
                                 </p>
-                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/celestiaorg/docs/blob/main/nodes/mainnet.md" class="btn">Github link</a>
+                                <a target="_blank" rel="noopener noreferrer" href="https://t.me/+viPCrANM-mgwZjA0" class="btn">Report</a>
                             </div>
                         </div>                        
                         <div class="card">
@@ -37,23 +37,11 @@
                             </div>
                             <div class="card-body">
                                 <p>
-                                    We run every 5 minute /abci and /status and publish the results.
+                                    We run every 5 minute health, syncState and nodeRoles and publish the results.
                                 </p>
                                 <a target="_blank" rel="noopener noreferrer" href="" class="btn">Every 5 mins</a>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h3>Fetch Endpoints</h3>
-                            </div>
-                            <div class="card-body">
-                                <p>
-                                    We run a job to fetch all the endpoints from github links every hour. 
-                                </p>
-                                <a target="_blank" rel="noopener noreferrer" href="" class="btn">Every hour</a>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </body>

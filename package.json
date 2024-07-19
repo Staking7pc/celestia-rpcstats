@@ -1,5 +1,5 @@
 {
-  "name": "celestia-rpcstats",
+  "name": "Avail-rpcstats",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +11,7 @@
     "react-dom": "*",
     "react-router": "*",
     "react-router-dom": "*",
-    "react-scripts": "*",
+    "react-scripts": "^5.0.1",
     "recharts": "*",
     "web-vitals": "*"
   },

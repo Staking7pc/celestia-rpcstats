@@ -7,16 +7,13 @@ import Cards from './Cards';
 function RpcStatus(props) {
 
   const headers = [
-    { key: "moniker", label: "MONIKER" },
-    { key: "rpcUrl", label: "END POINT" },
-    { key: "catchingUp", label: "CATCHING_UP" },
-    { key: "indexer", label: "INDEXING" },
-    { key: "earliestBlock", label: "EARLIEST_BLOCK" },
-    { key: "latestBlock", label: "LATEST_BLOCK" },
+    { key: "rpc_endpoint", label: "END POINT" },
+    { key: "issynching", label: "IN SYNC?" },
+    { key: "peers", label: "PEERS" },
+    { key: "startingblock", label: "EARLIEST_BLOCK" },
+    { key: "currentblock", label: "LATEST_BLOCK" },
     { key: "network", label: "NETWORK" },
-    { key: "version", label: "VERSION" },
-
-    // { key: "timestamp", label: "CHECKED_ON (UTC)" }
+    { key: "role", label: "NODE_TYPE" },
   ];
 
   const [rpcDetails, setRpcDetails] = useState([]);
@@ -24,7 +21,7 @@ function RpcStatus(props) {
   const [time1, setTime] = useState(); // CamelCased
   const [copiedUrl, setCopiedUrl] = useState(null);
   const [sortedColumn, setSortedColumn] = useState(null);
-  const [selectedNetwork, setSelectedNetwork] = useState('celestia');
+  const [selectedNetwork, setSelectedNetwork] = useState('Avail Turing Network');
   let networks = [...new Set(rpcDetails.map(detail => detail.network))];
 
   const handleCopyClick = (text) => {
@@ -35,7 +32,7 @@ function RpcStatus(props) {
 
 
   useEffect(() => {
-    axios.get('https://celestia-tools.brightlystake.com/api/celestia/rpcstatus')
+    axios.get('https://avail-tools.brightlystake.com/api/avail/rpc-status')
       .then(res => {
         setRpcDetails(res.data);
         setTime(res.data[2].timestamp); // Renamed to setTime
@@ -60,14 +57,13 @@ function RpcStatus(props) {
               onClick={() => setSelectedNetwork(String(network))}
               className={selectedNetwork === String(network) ? 'active' : ''}
             >
-              {network == 'None' ? 'Not-reachable Endpoints' : network == 'mocha-4' ? 'Testnet':network == 'celestia' ? 'Mainnet':network}
+              {network == 'None' ? 'Not-reachable Endpoints' : network == 'Avail Turing Network' ? 'Testnet':network == 'Avail Mainnet' ? 'Mainnet':network}
             </button>
 
           ))}
           <button onClick={() => setSelectedNetwork(null)}>Show All</button>
          
         </div>
-        <p className='highlight'>RPCs for DA nodes should have INDEXING ON and EARLIEST_BLOCK as 1</p>
         <table id='validators' key={`${selectedNetwork}-${sortedColumn}-${order}`}>
 
           <thead>
@@ -83,20 +79,19 @@ function RpcStatus(props) {
                 .filter(detail => !selectedNetwork || String(detail.network) === String(selectedNetwork))
                 .map(val => {
                   return (
-                    <tr className={(val.moniker === "Brightlystake_rpc") ? "decorate" : (val.catchingUp != "False") ? "error" : val.latestBlock == 'None' ? 'error' : 'NO'} key={val.moniker}>
-                      <td className='bold'>{String(val.moniker).toUpperCase()}</td>
-                      <td className="tooltip" onClick={() => handleCopyClick(val.rpcUrl)}>
-                        {val.rpcUrl}
-                        <span className={`tooltiptext ${copiedUrl === val.rpcUrl ? 'copied' : ''}`}>
-                          {copiedUrl === val.rpcUrl ? 'Copied!' : 'Click to copy'}
+                    <tr className={(val.issynching != "") ? "error" : val.currentblock == 'None' ? 'error' : 'NO'} key={val.moniker}>
+                      <td className="tooltip" onClick={() => handleCopyClick(val.rpc_endpoint)}>
+                        {val.rpc_endpoint}
+                        <span className={`tooltiptext ${copiedUrl === val.rpc_endpoint ? 'copied' : ''}`}>
+                          {copiedUrl === val.rpc_endpoint ? 'Copied!' : 'Click to copy'}
                         </span>
                       </td>
-                      <td className={val.catchingUp === "False" ? "Active" : "InActive"}>{val.catchingUp}</td>
-                      <td className={val.indexer == 'on' ? 'green' : 'NO'}>{String(val.indexer).toUpperCase()}</td>
-                      <td>{val.earliestBlock}</td>
-                      <td className={val.latestBlock == 'None' ? 'InActive' : 'NO'}>{val.latestBlock}</td>
+                      <td className={(val.issynching === "" && val.network!= "")? "Active" : "InActive"}>{(val.issynching ==="" && val.network== "") ? "--" : "Yes"}</td>
+                      <td className={val.peers < 10 ? 'green' : 'NO'}>{val.peers}</td>
+                      <td>{val.startingblock}</td>
+                      <td className={val.currentblock == 'None' ? 'InActive' : 'NO'}>{val.currentblock}</td>
                       <td className={val.network === "blockspacerace-0" ? "Active" : "InActive"}>{val.network}</td>
-                      <td className={val.version >= "0.13.0" ? "Active" : "InActive"}>{val.version}</td>
+                      <td className={val.role}>{val.role}</td>
                     </tr>
                   )
                 })
